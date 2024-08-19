@@ -329,9 +329,6 @@
       .texto_2 {
         font-size: 1em;
       }
-      .concepto_1 {
-        margin-top: 50px;
-      }
 }
 
 @media screen and (max-width: 650px) {

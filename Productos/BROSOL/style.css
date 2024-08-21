@@ -1,0 +1,607 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'arial';
+}
+
+/*----------------- MENU -----------------------------*/
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0; /* El menú se quedará pegado en la parte superior */
+    background-color: #fff;
+    z-index: 3;
+}
+
+.logo-list-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu li {
+    margin: 0 10px;
+    border-radius: 20px;
+}
+
+.menu li a {
+    text-decoration: none; /* Quita la decoración de subrayado predeterminada */
+    color: inherit; /* Hereda el color del texto del elemento li */
+    display: block; /* Hace que los enlaces ocupen todo el ancho del li */
+    padding: 10px; /* Añade relleno para espaciar el contenido del enlace */
+}
+
+
+
+/* Estilos para la lista de PRODUCTOS */
+.dropdown {
+    position: relative;
+    padding: 0;
+}
+
+.has-arrow {
+    display: block;
+    align-items: center;
+}
+
+.has-arrow .arrow {
+    display: inline-block;
+    position: absolute;
+    transition: transform 0.3s;
+}
+
+.has-arrow:hover .arrow {
+    transform: rotate(180deg);
+}
+
+
+
+.submenu {
+    height: 250px;
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    text-align: center;
+    font-weight: bold;
+    overflow-y: scroll;
+}
+
+
+.dropdown:hover .submenu {
+    display: block;
+}
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background: #000000;
+    margin: 3px 0;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .menu li {
+    margin: 0 10px;
+  }
+
+  .boton-menu-abrir,
+  .boton-menu-cerrar {
+      display: none;
+  }
+
+
+
+  .menu li {
+    margin: 0 20px;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave por defecto */
+}
+.menu li:hover {
+    background-color: rgb(0, 115, 255); /* Cambia el color de fondo a azul */
+    color: white; /* Cambia el color del texto a blanco */
+    transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+}
+
+
+.menu li.dropdown:hover {
+    background-color: initial; /* Elimina la animación de fondo al hacer hover */
+    color: inherit; /* Mantén el color del texto igual */
+}
+
+.submenu li:nth-child(1):hover{
+    background-color: blue;
+    color: rgb(255, 255, 0);
+    font-weight: bold;
+
+}
+
+.submenu li:nth-child(2):hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 0, 0);
+    font-weight: bold;
+}
+
+.submenu li:nth-child(3):hover{
+    color: rgb(246, 255, 0);
+    background-color: rgb(255, 0, 0);
+    font-weight: bold;
+}
+.submenu li:nth-child(4):hover{
+    background: rgb(0, 0, 0);
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+}
+.submenu li:nth-child(6):hover{
+    background: rgb(0, 200, 255);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.submenu li:nth-child(7):hover{
+    background: rgb(255, 213, 2);
+    color: rgb(64, 0, 255);
+    font-weight: bold;
+}
+
+
+/* Estilos adicionales para hacerlo responsive */
+@media (max-width: 865px) {
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0); /* Transparente al principio */
+        z-index: 2;
+        pointer-events: none; /* Evita la interacción con el contenido de fondo */
+        transition: background 0.3s;
+    }
+    
+    .boton-menu-abrir,
+    .boton-menu-cerrar {
+        display: inline-block;
+        position: absolute;
+        right: 30px;
+        height: 30px;
+        width: 40px;
+    }
+    .boton-menu-cerrar{
+        display: none;
+        z-index: 4;
+    }
+      .botones.abierto{
+        display: flex;
+      }
+    .boton-menu-cerrar.visible {
+        display: flex;
+      }
+      
+    .menu-container {
+        height: 100px;
+        align-items: center;
+    }
+
+    .menu.abierto {
+        display: flex;
+        flex-direction: column;
+        position: fixed; /* Cambiar a posición fija */
+        top: 0;
+        right: 0;
+        bottom: 0; /* Extender hasta abajo */
+        background: #fff;
+        padding: 75px 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+        z-index: 3;
+        visibility: visible;
+        transition: right 0.3s;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed; /* Cambiar a posición fija */
+        top: 0;
+        right: -200px;
+        bottom: 0; /* Extender hasta abajo */
+        background: #fff;
+        padding: 75px 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+        z-index: 3;
+        transition: right 0.3s;
+    }
+
+    .menu li {
+        margin: 5px 0;
+    }
+
+    .menu li:last-child {
+        margin-top: auto; /* Empujar el último elemento hacia abajo, haciendo que esté en la parte inferior */
+    }
+
+    .submenu {
+        height: 212px;
+        margin: -6px;
+        position: absolute;
+        display: none;
+        margin-top: 0;
+        padding: 0;
+        box-shadow: none;
+        left: 25px;
+    }
+    .submenu li {
+        padding: 0;
+    }
+}
+/*----------------- FIN MENU -----------------------------*/
+
+.logo-marca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top:-40px ;
+    
+}
+
+.logo-m {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin-top: -20px;
+    margin-bottom: 50px;
+}
+.text {
+    flex: 1;
+    text-align: center;
+}
+
+.text h1{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding: 0 50px;
+}
+
+
+.text p{
+    font-size: 1em;
+    padding: 0 20px;
+}
+.imagenes {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imagenes img {
+    max-width: 100%;
+}
+.fondo {
+    width: 700px; /* Ajusta el tamaño según tus necesidades */
+    height: 300px;
+
+}
+.producto {
+    position: absolute;
+    width: 350px; /* Ajusta el tamaño según tus necesidades */
+    top: 51%; /* Para centrar verticalmente la imagen sobrepuesta */
+    transform: translateY(-50%);
+}
+
+
+
+.catalogo {
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 80px;
+}
+.catalogo p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.catalogo a {
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+    vertical-align: top; /* Alineación vertical superior */
+}
+.catalogo a img {
+    width: 150px; /* Ancho de las imágenes */
+    height: 50px; /* Alto de las imágenes */
+    object-fit: contain; /* Ajusta la imagen sin distorsionarla */
+    cursor: pointer;
+}
+.boton-ordenador {
+    display: inline-block;
+    width: 250px; /* Ancho igual al de las imágenes */
+    height: 50px; /* Alto igual al de las imágenes */
+    line-height: 50px; /* Alinea el texto verticalmente */
+    background-color: rgb(256, 190, 1);
+    color: rgb(16, 0, 131);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1100px) {
+    .container {
+      flex-direction: ROW;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+    
+    .text h1{
+        font-size: 1.5em;
+        padding: 0 50px;
+        text-wrap: balance;
+    }
+    
+    
+    .text p{
+        font-size: 1em;
+        padding: 0 20px;
+    }
+  
+    .imagenes {
+      margin-top: 20px;
+    }
+  
+    .fondo {
+      width: 500px;
+      height: 325px;
+    }
+  
+    .producto {
+      width: 450px;
+      right: 20px;
+    }
+  }
+  
+  /* Para tabletas */
+  @media screen and (max-width: 862px) {
+
+    .container {
+        flex-direction: column;
+      }
+
+    
+    .text h1{
+        font-size: 1.5em;
+        padding: 0 80px;
+    }
+    
+    
+    .text p{
+        font-size: 1em;
+        padding: 0 20px;
+    }
+    
+    .fondo {
+      width: 380px;
+      height: 220px;
+    }
+  
+    .producto {
+      width: 300px;
+    }
+  }
+  
+  /* Para teléfonos */
+  @media screen and (max-width: 480px) {
+    .logo-marca{
+        margin-top: -20px;
+    }
+    .text h1{
+        font-size: 1.2em;
+        padding: 0 20px;
+    }
+    
+    
+    .text p{
+        font-size: 1em;
+        padding: 0 20px;
+        margin-bottom: 50px;
+    }
+    .imagenes{
+        margin-top: 50px;
+    }
+    .fondo {
+      width: 300px;
+      height: 195px;
+    }
+  
+    .producto {
+      width: 240px;
+    }
+
+    .catalogo{
+        display: none;
+    }
+  }
+
+
+/* Estilos para la parte izquierda del footer */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.footer-left ul li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.footer-left ul li a:hover {
+    color: rgb(0, 115, 255);
+}
+
+.footer-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-left ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.productos {
+    margin-top: 30px;
+}
+
+.productos a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.productos a:hover {
+    color: rgb(0, 115, 255);
+}
+
+.derechos-copyright {
+    margin-top: 30px;
+    font-size: 0.8em;
+}
+
+.footer-center {
+    text-align: center;
+    margin-right: 5%;
+    margin-top: 20px;
+}
+
+.footer-center p {
+    margin: 0 0 10px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-media a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.social-media a img {
+    width: 32px; /* Tamaño del icono */
+    height: 32px; /* Tamaño del icono */
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.social-media a:hover {
+    color: rgb(0, 115, 255);
+}
+
+.footer-right {
+    text-align: center;
+    margin-top: 10px;
+    width: 100%; /* Toma todo el ancho disponible */
+}
+
+.logo_footer img {
+    width: 280px;
+    height: auto;
+}
+
+.copyright {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 865px) {
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Centro el contenido del footer */
+        text-align: center; /* Centro el texto dentro del footer */
+    }  
+    .footer-left ul {
+        text-align: center;
+    }
+
+    .footer-left ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .footer-center {
+        margin-top: 40px;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .social-media {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-media a {
+        margin-bottom: 10px;
+    }
+
+    .footer-right {
+        width: 100%;
+        text-align: center;
+        margin-left: 30px;
+    }
+}
